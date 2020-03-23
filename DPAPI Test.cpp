@@ -43,7 +43,7 @@ PrintUsage(
 }
 
 int
-wmain(
+wmain (
    int argc,
    wchar_t *argv[]
 )
@@ -59,7 +59,7 @@ wmain(
 
    if (argc != 3)
    {
-      PrintUsage(L"TestDPAPI");
+      PrintUsage(L"DPAPI Test");
       return EXIT_FAILURE;
    }
 
