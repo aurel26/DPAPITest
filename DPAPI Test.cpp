@@ -34,16 +34,18 @@ WriteFileToDisk (
    {
       fwprintf(stderr, L"WriteFile() failed (error %u).\n", GetLastError());
       CloseHandle(hFile);
+
       return FALSE;
    }
 
    wprintf(L"Protected test blob successfully written.\n");
    CloseHandle(hFile);
+
    return TRUE;
 }
 
 void
-PrintUsage(
+PrintUsage (
    _In_z_ LPWSTR szAppName
 )
 {
@@ -107,6 +109,7 @@ wmain (
          {
             fwprintf(stderr, L"CryptUnprotectData failed (error 0x%x).\n", GetLastError());
             CloseHandle(hFile);
+
             return EXIT_FAILURE;
          }
          else
