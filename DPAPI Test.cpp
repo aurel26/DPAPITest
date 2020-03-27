@@ -97,7 +97,7 @@ wmain (
          bResult = CryptUnprotectData(&DataIn, &szDesc, NULL, NULL, NULL, 0, &DataOut);
          if (bResult == FALSE)
          {
-            fwprintf(stderr, L"CryptUnprotectData failed (error %u).\n", GetLastError());
+            fwprintf(stderr, L"CryptUnprotectData failed (error 0x%x).\n", GetLastError());
             CloseHandle(hFile);
             return EXIT_FAILURE;
          }
@@ -141,7 +141,7 @@ wmain (
       bResult = CryptProtectData(&DataIn, NULL, NULL, NULL, NULL, 0, &DataOut);
       if (bResult == FALSE)
       {
-         fwprintf(stderr, L"CryptProtectData failed (error %u).\n", GetLastError());
+         fwprintf(stderr, L"CryptProtectData failed (error 0x%x).\n", GetLastError());
          return EXIT_FAILURE;
       }
       else
