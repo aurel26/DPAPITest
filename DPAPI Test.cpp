@@ -22,7 +22,7 @@ WriteFileToDisk (
       dwError = GetLastError();
 
       if (dwError == ERROR_FILE_EXISTS)
-         fwprintf(stderr, L"CreateFile(%s) failed (datafile must not already exist).\n", szFileName, GetLastError());
+         fwprintf(stderr, L"CreateFile(%s) failed (datafile must not already exist).\n", szFileName);
       else
          fwprintf(stderr, L"CreateFile(%s) failed (error %u).\n", szFileName, dwError);
 
