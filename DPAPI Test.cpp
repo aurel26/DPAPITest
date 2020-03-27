@@ -14,10 +14,18 @@ WriteFileToDisk (
    HANDLE hFile;
    DWORD dwDataWritten;
 
-   hFile = CreateFile(szFileName, GENERIC_WRITE, 0, NULL, CREATE_ALWAYS, 0, NULL);
+   hFile = CreateFile(szFileName, GENERIC_WRITE, 0, NULL, CREATE_NEW, 0, NULL);
    if (hFile == INVALID_HANDLE_VALUE)
    {
-      fwprintf(stderr, L"CreateFile(%s) failed (error %u).\n", szFileName, GetLastError());
+      DWORD dwError;
+
+      dwError = GetLastError();
+
+      if (dwError == ERROR_FILE_EXISTS)
+         fwprintf(stderr, L"CreateFile(%s) failed (datafile must not already exist).\n", szFileName, GetLastError());
+      else
+         fwprintf(stderr, L"CreateFile(%s) failed (error %u).\n", szFileName, dwError);
+
       return FALSE;
    }
 
